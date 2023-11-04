@@ -67,7 +67,7 @@ const Nav = () => {
       </ul>
     </div>
     <img src={logo} alt="" />
-    <h1 className='text-2xl font-semibold'>uifry</h1>
+    <h1 className='text-2xl font-semibold'>JobWave</h1>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="gap-5 menu-horizontal px-1">
