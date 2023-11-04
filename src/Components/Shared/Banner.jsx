@@ -15,6 +15,21 @@ const Banner = () => {
 <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Search</button>
 </div>
 
+<div className='flex justify-center gap-3 pt-10'>
+    <div className='text-center'>
+        <p className='font-black text-lg md:text-2xl'>20M+</p>
+        <p>User</p>
+    </div>
+    <div className='text-center'>
+        <p className='font-black text-lg md:text-2xl'>500k+</p>
+        <p>Jobs</p>
+    </div>
+    <div className='text-center'>
+        <p className='font-black text-lg md:text-2xl'>100+</p>
+        <p>Partners</p>
+    </div>
+</div>
+
             </div>
             </div>
             
