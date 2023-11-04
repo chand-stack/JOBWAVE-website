@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        newfont:"'Familjen Grotesk', sans-serif"
+      }
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
