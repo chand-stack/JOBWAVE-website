@@ -7,7 +7,7 @@ import img6 from '../../assets/Frame (6).svg'
 import img7 from '../../assets/yandex_music.svg'
 const Companies = () => {
     return (
-        <div className='container mx-auto md:flex items-center my-32'>
+        <div className='container mx-auto flex flex-col-reverse md:flex-row gap-5 md:gap-0 items-center my-32'>
             <div className='grid grid-cols-3 flex-grow'>
                 <img className='mx-auto' src={img1} alt="" />
                 <img src={img2} alt="" />
