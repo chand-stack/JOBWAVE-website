@@ -77,7 +77,7 @@ const Nav = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Login</Link>
+    <Link to="/login" className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Login</Link>
   </div>
 </div>
         </div>
