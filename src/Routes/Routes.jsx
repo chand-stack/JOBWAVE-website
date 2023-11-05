@@ -3,6 +3,7 @@ import Root from "../MainLayout/Root";
 import Home from "../Components/Pages/Home/Home";
 import Register from "../Components/Pages/Register/Register";
 import Login from "../Components/Pages/Login/Login";
+import AddJob from "../Components/Pages/AddJob/AddJob";
 
 
 const routes = createBrowserRouter([
@@ -21,6 +22,10 @@ const routes = createBrowserRouter([
             {
                  path:"/login",
                  element:<Login></Login>
+            },
+            {
+                path:"/addjob",
+                element:<AddJob></AddJob>
             }
         ]
     }
