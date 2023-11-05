@@ -4,7 +4,10 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxios from '../../../hook/useAxios';
+import Swal from 'sweetalert2';
 const AddJob = () => {
+    const axios = useAxios()
     const [startDate, setStartDate] = useState(new Date());
     const [lastDate,setLastDate] = useState(new Date())
     const [jobCategory,setJobCategory] = useState(null)
@@ -38,9 +41,18 @@ const AddJob = () => {
         }
 console.log(job);
 
+axios.post("/job-add", job)
+.then(res => {
+    if(res.data.insertedId){
+        Swal.fire(
+            'Congratulations!',
+            'Your job posting has been submitted successfully.',
+            'success'
+          )
+    }
+})
 
-
-      }
+    }
 
     return (
         <div className="container mx-auto grid md:grid-cols-2">
@@ -74,7 +86,7 @@ console.log(job);
     </div>
     <div>
         <h1 className='text-white text-xl font-semibold'>Salary Range</h1>
-        <input type="number" name='salary' placeholder="E.g. 30k-60k" className="input input-bordered input-primary w-full" />
+        <input type="text" name='salary' placeholder="E.g. 30,000-60,000" className="input input-bordered input-primary w-full" />
     </div>
     <div className='lg:flex justify-between'>
         <div className=' space-y-3'>
