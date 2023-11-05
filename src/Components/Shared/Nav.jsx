@@ -4,7 +4,17 @@ import logo from '../../assets/Frame.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Nav = () => {
-    const {user} = useContext(AuthContext)
+    const {user,logOut} = useContext(AuthContext)
+
+    const logOutHandler = () => {
+      logOut()
+      .then(()=>{
+        console.log("logout");
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
     const links = <>
     <li><NavLink
   to="/"
@@ -87,7 +97,7 @@ const Nav = () => {
         <img className='h-14 rounded-full border-2 border-[#A582F7]'  src={user?.photoURL || gif} alt="User" />
         </label>
         <ul tabIndex={0} className="dropdown-content right-3/4 z-30 menu  shadow bg-base-100 rounded-box">
-          <li><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Log out</button></li>
+          <li><button onClick={logOutHandler} className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Log out</button></li>
           
         </ul>
       </div> : <Link to="/login" className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Login</Link>
