@@ -14,11 +14,11 @@ const Footer = () => {
             JobWave -<br />
             Navigating Your Career Future. Your path to success starts here.
           </p>
-          <p>Copyright © 2023 - Jobwave</p>
         </aside>
         <nav>
           <div className="grid grid-flow-col gap-4">
             <div className="text-white text-center">
+              <p className="text-2xl font-semibold py-3">Find Us On Social Media:</p>
               <div className="text-white flex items-center gap-4 text-5xl justify-center">
                 <LiaFacebook />
                 <AiOutlineInstagram />
@@ -28,6 +28,11 @@ const Footer = () => {
           </div>
         </nav>
       </footer>
+      <footer className="footer footer-center p-4  text-white -mt-5 border-t">
+  <aside>
+    <p>Copyright © 2023 - All right reserved by JOBWAVE</p>
+  </aside>
+</footer>
     </div>
   );
 };
