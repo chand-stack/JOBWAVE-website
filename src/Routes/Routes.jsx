@@ -8,6 +8,7 @@ import ViewJob from "../Components/Pages/ViewJob/ViewJob";
 import Myjob from "../Components/Pages/Myjob/Myjob";
 import UpdateJob from "../Components/Pages/UpdateJob/UpdateJob";
 import AppliedJob from "../Components/AppliedJob/AppliedJob";
+import Alljob from "../Components/AllJob/Alljob";
 
 
 const routes = createBrowserRouter([
@@ -46,6 +47,10 @@ const routes = createBrowserRouter([
             {
                 path:"/applied",
                 element: <AppliedJob></AppliedJob>
+            },
+            {
+                path:"/alljobs",
+                element: <Alljob></Alljob>
             }
         ]
     }
