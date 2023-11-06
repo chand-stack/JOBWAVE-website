@@ -35,9 +35,10 @@ const AddJob = () => {
         const deadline = lastDate
         const applicants = e.target.applicants.value 
         const email = user?.email
+        const description = e.target.description.value 
         // console.log(title,photo,userName,category,salary,postingDate,deadline,applicants,email);
         const job = {
-            title,photo,userName,category,salary,postingDate,deadline,applicants,email
+            title,photo,userName,category,salary,postingDate,deadline,applicants,email,description
         }
 console.log(job);
 
@@ -100,7 +101,7 @@ axios.post("/job-add", job)
     </div>
     <div>
         <h1 className='text-white text-xl font-semibold'>Job Description</h1>
-        <textarea className="textarea textarea-primary w-full" placeholder="Description"></textarea>
+        <textarea name='description' className="textarea textarea-primary w-full" placeholder="Description"></textarea>
     </div>
     <div>
         <h1 className='text-white text-xl font-semibold'>Job Applicants</h1>

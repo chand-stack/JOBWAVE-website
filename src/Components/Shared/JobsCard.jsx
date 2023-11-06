@@ -5,6 +5,7 @@ import useAxios from '../../hook/useAxios';
 import img from '../../assets/icons8-user.gif'
 import { FaPeopleGroup } from 'react-icons/fa6';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const JobsCard = () => {
@@ -57,9 +58,9 @@ const JobsCard = () => {
               </div>
               <h1 className='text-2xl md:text-3xl font-semibold'>{job.title}</h1>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
-              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}k  per year</p>
+              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}  per year</p>
               <div className='flex justify-between'>
-                <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button>
+                <Link to={`/jobDetail/${job._id}`}><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button></Link>
                 <div className='flex items-center gap-2'>
                     <FaPeopleGroup className='text-2xl'/><p>{job.applicants} Applied</p>
                 </div>
@@ -89,9 +90,9 @@ const JobsCard = () => {
               </div>
               <h1 className='text-2xl md:text-3xl font-semibold'>{job.title}</h1>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
-              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}k  per year</p>
+              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}  per year</p>
               <div className='flex justify-between'>
-                <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button>
+              <Link to={`/jobDetail/${job._id}`}><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button></Link>
                 <div className='flex items-center gap-2'>
                     <FaPeopleGroup className='text-2xl'/><p>{job.applicants} Applied</p>
                 </div>
@@ -121,9 +122,9 @@ const JobsCard = () => {
               </div>
               <h1 className='text-2xl md:text-3xl font-semibold'>{job.title}</h1>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
-              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}k  per year</p>
+              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}  per year</p>
               <div className='flex justify-between'>
-                <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button>
+              <Link to={`/jobDetail/${job._id}`}> <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button></Link>
                 <div className='flex items-center gap-2'>
                     <FaPeopleGroup className='text-2xl'/><p>{job.applicants} Applied</p>
                 </div>
@@ -153,9 +154,9 @@ const JobsCard = () => {
               </div>
               <h1 className='text-2xl md:text-3xl font-semibold'>{job.title}</h1>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
-              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}k  per year</p>
+              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary} per year</p>
               <div className='flex justify-between'>
-                <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button>
+              <Link to={`/jobDetail/${job._id}`}><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button></Link>
                 <div className='flex items-center gap-2'>
                     <FaPeopleGroup className='text-2xl'/><p>{job.applicants} Applied</p>
                 </div>
@@ -170,7 +171,7 @@ const JobsCard = () => {
     <TabPanel>
     {
         isLoading? <div className='flex justify-center'>
-            <span className="loading loading-spinner text-info loading-lg mx-auto h-[50vh] text-center"></span>
+            <span className="loading loading-spinner text-info loading-lg mx-auto h-screen text-center"></span>
         </div> :
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5 px-3'>
 
@@ -185,9 +186,9 @@ const JobsCard = () => {
               </div>
               <h1 className='text-2xl md:text-3xl font-semibold'>{job.title}</h1>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
-              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}k  per year</p>
+              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}  per year</p>
               <div className='flex justify-between'>
-                <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button>
+              <Link to={`/jobDetail/${job._id}`}><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button></Link>
                 <div className='flex items-center gap-2'>
                     <FaPeopleGroup className='text-2xl'/><p>{job.applicants} Applied</p>
                 </div>
