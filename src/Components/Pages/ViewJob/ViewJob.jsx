@@ -4,10 +4,9 @@ import useAxios from "../../../hook/useAxios";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-import { useState } from "react";
 
 const ViewJob = () => {
-    const [applicantCount , setApplicantCount] = useState(0)
+    
     const {user} = useContext(AuthContext)
     const axios = useAxios()
     const param = useParams()

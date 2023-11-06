@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Myjob = () => {
 
@@ -64,7 +65,7 @@ console.log(_id);
     return (
         
         <div className="container mx-auto">
-            <div className="h-[40vh] bg-[#111] flex justify-center">
+            <div className="h-[40vh] bg-[#111] flex justify-center items-center">
               <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">MY <span className="text-[#A582F7]">JOBS</span></h1>
             </div>
             {
@@ -90,7 +91,7 @@ console.log(_id);
               <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
               <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job?.salary}  per year</p>
               <div className='flex justify-between'>
-                <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>Update Details</button>
+                <Link to={`/update/${job._id}`}><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>Update Details</button></Link>
                <button onClick={()=>deleteHandler(job?._id)}  className='btn bg-gradient-to-t from-red-600 from-10% via-red-500 via-30% to-red-400 to-90% border-none text-white'>Delete</button>
               </div>
 

@@ -6,6 +6,7 @@ import Login from "../Components/Pages/Login/Login";
 import AddJob from "../Components/Pages/AddJob/AddJob";
 import ViewJob from "../Components/Pages/ViewJob/ViewJob";
 import Myjob from "../Components/Pages/Myjob/Myjob";
+import UpdateJob from "../Components/Pages/UpdateJob/UpdateJob";
 
 
 const routes = createBrowserRouter([
@@ -36,6 +37,10 @@ const routes = createBrowserRouter([
             {
                 path:"/myjob",
                 element:<Myjob></Myjob>
+            },
+            {
+                path:"/update/:id",
+                element:<UpdateJob></UpdateJob>
             }
         ]
     }
