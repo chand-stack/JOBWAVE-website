@@ -36,8 +36,8 @@ const JobsCard = () => {
       <Tab onClick={() => setCategory("")}>All Recent</Tab>
       <Tab onClick={() => setCategory("onsite")}>On Site Job</Tab>
       <Tab onClick={() => setCategory("remote")}>Remote Job</Tab>
-      <Tab onClick={() => setCategory("part-time")}>Hybrid</Tab>
-      <Tab onClick={() => setCategory("hybrid")}>Part Time</Tab>
+      <Tab onClick={() => setCategory("hybrid")}>Hybrid</Tab>
+      <Tab onClick={() => setCategory("part-time")}>Part Time</Tab>
     </TabList>
 
     <TabPanel>
