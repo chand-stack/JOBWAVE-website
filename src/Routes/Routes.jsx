@@ -5,6 +5,7 @@ import Register from "../Components/Pages/Register/Register";
 import Login from "../Components/Pages/Login/Login";
 import AddJob from "../Components/Pages/AddJob/AddJob";
 import ViewJob from "../Components/Pages/ViewJob/ViewJob";
+import Myjob from "../Components/Pages/Myjob/Myjob";
 
 
 const routes = createBrowserRouter([
@@ -31,6 +32,10 @@ const routes = createBrowserRouter([
             {
                 path:"/jobDetail/:id",
                 element:<ViewJob></ViewJob>,
+            },
+            {
+                path:"/myjob",
+                element:<Myjob></Myjob>
             }
         ]
     }

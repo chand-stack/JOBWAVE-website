@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import useAxios from "../../../hook/useAxios";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const ViewJob = () => {
+    const [applicantCount , setApplicantCount] = useState(0)
     const {user} = useContext(AuthContext)
     const axios = useAxios()
     const param = useParams()
@@ -20,6 +23,7 @@ const ViewJob = () => {
 
 
     const applyHandler = () =>{
+        
         if(user.email == jobDetail.data.email){
             alert("fas gaya")
             return
@@ -29,6 +33,40 @@ const ViewJob = () => {
         else{
             document.getElementById('my_modal_1').showModal()
         }
+    }
+
+    const applysubmit = e => {
+        e.preventDefault()
+        
+        const name = e.target.name.value 
+        const email = e.target.email.value 
+        const resume = e.target.resume.value
+        const category = jobDetail?.data?.category
+        const photo = jobDetail?.data?.photo
+        const salary = jobDetail?.data?.salary
+        const title = jobDetail?.data?.title
+        // console.log(name,email,resume,category,photo,salary,title);
+
+        const jobSubmit = {name,email,resume,category,photo,salary,title}
+
+        axios.post("/apply-job", jobSubmit)
+.then(res => {
+    if(res.data.insertedId){
+        Swal.fire(
+            'Congratulations!',
+            'Your job application has been submitted successfully..',
+            'success'
+          )
+          
+    }
+})
+
+
+
+axios.put(`/view-job/${jobDetail?.data?._id}`, {applicantCount : parseInt(jobDetail?.data?.applicants)+1})
+.then(res => {
+    console.log(res);
+})
     }
     return (
         <div>
@@ -71,7 +109,7 @@ const ViewJob = () => {
             </div>
             <dialog id="my_modal_1" className="modal">
   <div className="modal-box">
-    <form>
+    <form onSubmit={applysubmit}>
     <div>
         <h1 className='text-black text-xl font-semibold'>Name</h1>
         <input type="text" name='name' value={user?.displayName}  className="input input-bordered input-primary w-full" />
