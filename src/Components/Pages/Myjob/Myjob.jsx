@@ -5,6 +5,7 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import banner from '../../../assets/jobbannwe.jpg'
 
 const Myjob = () => {
 
@@ -63,11 +64,14 @@ console.log(_id);
 
     console.log(jobs?.data);
     return (
-        
-        <div className="container mx-auto">
-            <div className="h-[40vh] bg-[#111] flex justify-center items-center">
-              <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">MY <span className="text-[#A582F7]">JOBS</span></h1>
+        <>
+        <div className=" h-[40vh]" style={{backgroundImage:`url(${banner})`}}>
+            <div className="w-full h-full bg-black bg-opacity-80 flex justify-center items-center">
+            <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">My <span className="text-[#A582F7]">JOBS</span></h1>
             </div>
+        </div>
+        <div className="container mx-auto">
+            
             {
         myjobs.length==0 || isLoading ? <div className='flex justify-center'>
             <span className="loading loading-spinner text-info loading-lg mx-auto h-[50vh] text-center"></span>
@@ -101,6 +105,7 @@ console.log(_id);
       </div>
       }
         </div>
+        </>
     );
 };
 

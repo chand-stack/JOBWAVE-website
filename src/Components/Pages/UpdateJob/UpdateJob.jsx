@@ -1,3 +1,4 @@
+import banner from '../../../assets/jobbannwe.jpg'
 import { useContext } from 'react';
 import addjob from '../../../assets/addjob.png'
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
@@ -33,12 +34,11 @@ const UpdateJob = () => {
         setJobCategory(e.target.value)
     }
 
-    // console.log(jobCategory);
-    // if (startDate <= lastDate) {
-    //     console.log("You can apply for this job.");
-    //   } else {
-    //     console.log("Sorry, the application period for this job has ended.");
-    //   }
+  if(isLoading){
+    return <div className='container mx-auto flex justify-center items-center'>
+        <span className="loading loading-spinner loading-lg"></span>
+    </div>
+  }
 
     const updateJobHandler = (e) => {
         e.preventDefault();
@@ -94,10 +94,13 @@ const UpdateJob = () => {
       };
       
     return (
-        <div className="container mx-auto">
-            <div className="h-[40vh] bg-[#111] flex justify-center items-center">
-              <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">Update <span className="text-[#A582F7]">JOB</span></h1>
+        <>
+        <div className=" h-[40vh]" style={{backgroundImage:`url(${banner})`}}>
+            <div className="w-full h-full bg-black bg-opacity-80 flex justify-center items-center">
+            <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">Update <span className="text-[#A582F7]">JOB</span></h1>
             </div>
+        </div>
+        <div className="container mx-auto">
             <div className="container mx-auto grid md:grid-cols-2">
             <div className='hidden md:flex flex-col'>
           <img src={addjob} alt="" />
@@ -157,6 +160,7 @@ const UpdateJob = () => {
             
         </div>
         </div>
+        </>
     );
 };
 

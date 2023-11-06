@@ -3,6 +3,7 @@ import img2 from "../../assets/Ellipse (1).svg";
 import img3 from "../../assets/Ellipse (2).svg";
 import img4 from "../../assets/Ellipse (3).svg";
 import img5 from "../../assets/Ellipse (4).svg";
+import { Link } from "react-router-dom";
 const JobPost = () => {
   return (
     <div className=" container mx-auto flex flex-col-reverse md:flex-row-reverse justify-between px-3 md:px-8 lg:px-20">
@@ -34,9 +35,11 @@ const JobPost = () => {
           Global engagement unites countless individuals from diverse cultures,
           forming a vibrant tapestry of humanity.!
         </p>
-        <button className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white">
+        <div>
+        <Link to="/addjob"><button className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white">
           Post A Job
-        </button>
+        </button></Link>
+        </div>
       </div>
     </div>
   );
