@@ -4,9 +4,10 @@ import useAxios from "../../../hook/useAxios";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const ViewJob = () => {
-    
+    const [applicantNum,setApplicantNum] = useState(0)
     const {user} = useContext(AuthContext)
     const axios = useAxios()
     const param = useParams()
@@ -24,14 +25,24 @@ const ViewJob = () => {
     const applyHandler = () =>{
         
         if(user.email == jobDetail.data.email){
-            alert("fas gaya")
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Sorry, you cannot apply to a job posting you have created.',
+              });
             return
-        }else if(!(new Date() <= new Date(jobDetail?.data?.deadline))){
-            alert("date fail")
         }
-        else{
+        if(!(new Date() <= new Date(jobDetail?.data?.deadline))){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Sorry, the application deadline for this job has passed.',
+              });
+            return
+        }
+        
             document.getElementById('my_modal_1').showModal()
-        }
+        
     }
 
     const applysubmit = e => {
@@ -47,6 +58,7 @@ const ViewJob = () => {
         // console.log(name,email,resume,category,photo,salary,title);
 
         const jobSubmit = {name,email,resume,category,photo,salary,title}
+        console.log(jobSubmit);
 
         axios.post("/apply-job", jobSubmit)
 .then(res => {
@@ -62,10 +74,17 @@ const ViewJob = () => {
 
 
 
-axios.put(`/view-job/${jobDetail?.data?._id}`, {applicantCount : parseInt(jobDetail?.data?.applicants)+1})
-.then(res => {
+axios
+  .patch(`/view-job/${jobDetail?.data?._id}`)
+  .then((res) => {
     console.log(res);
-})
+    setApplicantNum(1)
+  })
+  .catch((error) => {
+    console.error("Axios Error:", error);
+    console.error("Error Message:", error.message);
+    console.error("Error Response:", error.response);
+  });
     }
     return (
         <div>
@@ -78,9 +97,9 @@ axios.put(`/view-job/${jobDetail?.data?._id}`, {applicantCount : parseInt(jobDet
 <div className=" hidden md:contents">
     <img className="rounded-full max-h-96 max-w-sm" src={jobDetail?.data?.photo} alt="" />
 </div>
-<div>
+<div className="flex-grow">
     <div className="h-[40vh]" style={{backgroundImage:`url(${jobDetail?.data?.photo})`,backgroundPosition:"center", backgroundSize:"cover"}}>
-        <div className="h-full w-full bg-black bg-opacity-80 flex justify-center items-center">
+        <div className="h-full  bg-black bg-opacity-80 flex justify-center items-center">
            <h1 className="text-3xl md:text-4xl font-black text-white">{jobDetail?.data?.title}</h1>
         </div>
 
@@ -100,7 +119,7 @@ axios.put(`/view-job/${jobDetail?.data?._id}`, {applicantCount : parseInt(jobDet
         </h1>
         <h1 className="text-white text-lg font-semibold">
             <span className="text-2xl text-[#A582F7]">Applicant Count:</span> <br />
-            {jobDetail?.data?.applicants} People
+            {jobDetail?.data?.applicants+applicantNum} People
         </h1>
         <div className="flex items-center">
             <div className="border mx-3 border-b-0 border-l-0 border-r-0 flex-1"></div>

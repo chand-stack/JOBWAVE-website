@@ -49,7 +49,7 @@ const UpdateJob = () => {
         const salary = e.target.salary.value;
         const postingDate = jobDetail?.data?.postingDate || startDate;
         const deadline = jobDetail?.data?.deadline || lastDate;
-        const applicants = e.target.applicants.value;
+        const applicants = parseInt(e.target.applicants.value);
         const email = user?.email;
         const description = e.target.description.value;
       
@@ -150,7 +150,7 @@ const UpdateJob = () => {
     </div>
     <div>
         <h1 className='text-white text-xl font-semibold'>Job Applicants</h1>
-        <input name='applicants' value={0} className="textarea textarea-primary w-full" placeholder="Job Applicants"/>
+        <input name='applicants' value={0} type='number' className="textarea textarea-primary w-full" placeholder="Job Applicants"/>
     </div>
     <div className='flex justify-end'>
         <button type='submit' className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>Update Job</button>

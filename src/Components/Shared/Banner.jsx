@@ -11,7 +11,7 @@ const Banner = () => {
             <p className='md:text-3xl font-medium my-10'>let us help you find a job that suits you the best!</p>
 
 <div className='flex justify-center gap-3'>
-<input type="text" placeholder="🔍 Search Jobs . . ." className="input input-bordered w-full max-w-xs" />
+<input type="text" placeholder=" Search Jobs . . ." className="input input-bordered w-full max-w-xs" />
 <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Search</button>
 </div>
 

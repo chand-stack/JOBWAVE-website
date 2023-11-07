@@ -33,14 +33,14 @@ const AddJob = () => {
         const salary = e.target.salary.value 
         const postingDate = startDate
         const deadline = lastDate
-        const applicants = e.target.applicants.value 
+        const applicants = parseInt(e.target.applicants.value) 
         const email = user?.email
         const description = e.target.description.value 
         // console.log(title,photo,userName,category,salary,postingDate,deadline,applicants,email);
         const job = {
             title,photo,userName,category,salary,postingDate,deadline,applicants,email,description
         }
-console.log(job);
+console.log(typeof applicants);
 
 axios.post("/job-add", job)
 .then(res => {
@@ -105,7 +105,7 @@ axios.post("/job-add", job)
     </div>
     <div>
         <h1 className='text-white text-xl font-semibold'>Job Applicants</h1>
-        <input name='applicants' value={0} className="textarea textarea-primary w-full" placeholder="Job Applicants"/>
+        <input name='applicants' value={0} type='number' className="textarea textarea-primary w-full" placeholder="Job Applicants"/>
     </div>
     <div className='flex justify-end'>
         <button type='submit' className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>Add A Job</button>

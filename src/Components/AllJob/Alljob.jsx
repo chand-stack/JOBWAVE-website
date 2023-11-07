@@ -41,7 +41,7 @@ const Alljob = () => {
             <div className='space-y-5'>
             <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">All <span className="text-[#A582F7]">JOB</span></h1>
             <form onSubmit={searchHandler} className='flex justify-center gap-3'>
-<input  type="text" name='search' placeholder="🔍 Search Jobs . . ." className="input input-bordered w-full max-w-xs" />
+<input  type="text" name='search' placeholder=" Search Jobs . . ." className="input input-bordered w-full max-w-xs" />
 <button type='submit' className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Search</button>
 </form>
             </div>

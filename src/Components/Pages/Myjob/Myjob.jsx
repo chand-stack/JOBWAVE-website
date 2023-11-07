@@ -88,16 +88,19 @@ console.log(_id);
               </div>
               </div>
               
+              <div className="flex flex-col">
               <p><span className='text-xl font-semibold text-[#A582F7]'>Title: </span> <span className='text-lg'>{job?.title}</span></p>
-              <p><span className='text-xl font-semibold text-[#A582F7]'>Description: </span> <span className='text-lg'>{job?.description}</span></p>
+              <p className="flex-grow"><span className='text-xl font-semibold text-[#A582F7]'>Description: </span> <span className='text-lg'>{job?.description}</span></p>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Applicants: </span> <span className='text-lg'>{job?.applicants}</span></p>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Category: </span> <span className='text-lg'>{job?.category}</span></p>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
               <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job?.salary}  per year</p>
+              </div>
               <div className='flex justify-between'>
                 <Link to={`/update/${job._id}`}><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>Update Details</button></Link>
                <button onClick={()=>deleteHandler(job?._id)}  className='btn bg-gradient-to-t from-red-600 from-10% via-red-500 via-30% to-red-400 to-90% border-none text-white'>Delete</button>
               </div>
+              
 
             </div>)
         }

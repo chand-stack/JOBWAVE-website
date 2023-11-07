@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import img1 from '../../assets/Frame (1).svg'
 import img2 from '../../assets/Frame (2).svg'
 import img3 from '../../assets/Frame (3).svg'
@@ -21,7 +22,7 @@ const Companies = () => {
             <div className='text-white space-y-5'>
                 <h1 className='text-3xl md:text-4xl font-black'>Work With <span className='text-[#A582F7]'>Exciting</span><br /> Companies</h1>
                 <p>Discover career opportunities with exciting, innovative companies. <br /> Elevate your career with us today!</p>
-                <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>Get Started</button>
+                <button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'><Link to="/alljobs">Get Started</Link></button>
 
             </div>
             
