@@ -29,6 +29,26 @@ const Company = () => {
                     
                 </div>
             </div>
+            <div className='flex justify-center mt-20'>
+            <div className="stats bg-[#111] text-white shadow">
+  
+  <div className="stat place-items-center">
+    <div className="stat-title text-white">User</div>
+    <div className="stat-value">20MK</div>
+  </div>
+  
+  <div className="stat place-items-center">
+    <div className="stat-title text-white">Jobs</div>
+    <div className="stat-value text-secondary">500k</div>
+  </div>
+  
+  <div className="stat place-items-center">
+    <div className="stat-title text-white">Partner</div>
+    <div className="stat-value">100+</div>
+  </div>
+  
+</div>
+            </div>
         </div>
     );
 };
