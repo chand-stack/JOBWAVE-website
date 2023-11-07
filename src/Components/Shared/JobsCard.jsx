@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const JobsCard = () => {
 
     const [category,setCategory] = useState('')
-    console.log(category);
+    // console.log(category);
 
     const axios = useAxios()
     const {data: jobs, isLoading} = useQuery({
@@ -24,7 +24,7 @@ const JobsCard = () => {
 
 
 
-    console.log(jobs);
+    // console.log(jobs);
     return (
         <div className="container mx-auto my-20 space-y-10">
             <h1 className="text-3xl md:text-4xl font-black text-white text-center">Newest <span className="text-[#A582F7]">Jobs</span> for You</h1>

@@ -34,12 +34,12 @@ const Company = () => {
   
   <div className="stat place-items-center">
     <div className="stat-title text-white">User</div>
-    <div className="stat-value">20MK</div>
+    <div className="stat-value">20M+</div>
   </div>
   
   <div className="stat place-items-center">
     <div className="stat-title text-white">Jobs</div>
-    <div className="stat-value text-secondary">500k</div>
+    <div className="stat-value text-secondary">500k+</div>
   </div>
   
   <div className="stat place-items-center">

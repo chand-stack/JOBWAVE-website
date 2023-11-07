@@ -9,12 +9,15 @@ import Myjob from "../Components/Pages/Myjob/Myjob";
 import UpdateJob from "../Components/Pages/UpdateJob/UpdateJob";
 import AppliedJob from "../Components/AppliedJob/AppliedJob";
 import Alljob from "../Components/AllJob/Alljob";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 
 const routes = createBrowserRouter([
     {
         path:"/",
         element:<Root></Root>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path:"/",
@@ -30,15 +33,15 @@ const routes = createBrowserRouter([
             },
             {
                 path:"/addjob",
-                element:<AddJob></AddJob>
+                element:<PrivateRoute><AddJob></AddJob></PrivateRoute>
             },
             {
                 path:"/jobDetail/:id",
-                element:<ViewJob></ViewJob>,
+                element:<PrivateRoute><ViewJob></ViewJob></PrivateRoute>,
             },
             {
                 path:"/myjob",
-                element:<Myjob></Myjob>
+                element:<PrivateRoute><Myjob></Myjob></PrivateRoute>
             },
             {
                 path:"/update/:id",
@@ -46,7 +49,7 @@ const routes = createBrowserRouter([
             },
             {
                 path:"/applied",
-                element: <AppliedJob></AppliedJob>
+                element: <PrivateRoute><AppliedJob></AppliedJob></PrivateRoute>
             },
             {
                 path:"/alljobs",

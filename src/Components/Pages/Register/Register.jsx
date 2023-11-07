@@ -3,7 +3,7 @@ import {BiSolidUser} from "react-icons/bi"
 import {AiFillLock} from "react-icons/ai"
 import {FcGoogle} from "react-icons/fc"
 import {MdAddPhotoAlternate,MdAttachEmail} from "react-icons/md"
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../AuthProvider/AuthProvider'
 import Swal from 'sweetalert2'
@@ -12,6 +12,7 @@ const Register = () => {
     const {creatUser,updateUser,loginWithGoogle} = useContext(AuthContext)
 
     const navigate = useNavigate()
+    const location = useLocation()
     const registerHandler = e => {
         e.preventDefault()
         const form = e.target 
@@ -57,7 +58,7 @@ const Register = () => {
               )
               updateUser(name,photo)
               .then(()=>{
-                navigate("/")
+                navigate(location.state || "/")
               })
               .catch(err => {
                 console.log(err);
@@ -76,7 +77,7 @@ const Register = () => {
                 'Welcome to our community. Explore and discover exciting career opportunities. Lets get started!',
                 'success'
               )
-              location("/")
+              navigate(location.state || "/")
         })
         .catch(error=>{
             console.log(error);
