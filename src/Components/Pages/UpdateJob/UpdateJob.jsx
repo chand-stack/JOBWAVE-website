@@ -9,6 +9,7 @@ import useAxios from '../../../hook/useAxios';
 import Swal from 'sweetalert2';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 const UpdateJob = () => {
     const axios = useAxios()
     const [startDate, setStartDate] = useState(new Date());
@@ -95,6 +96,10 @@ const UpdateJob = () => {
       
     return (
         <>
+        <Helmet>
+        <title>JobWave | Update-Job</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
         <div className=" h-[40vh]" style={{backgroundImage:`url(${banner})`}}>
             <div className="w-full h-full bg-black bg-opacity-80 flex justify-center items-center">
             <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">Update <span className="text-[#A582F7]">JOB</span></h1>

@@ -1,10 +1,16 @@
 
 import { Link } from 'react-router-dom';
 import err from '../assets/errorwithlandscape.jpg'
+import { Helmet } from 'react-helmet';
 
 const ErrorPage = () => {
+    
     return (
-        
+        <>
+        <Helmet>
+        <title>Error</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
         <div className='container mx-auto h-screen'>
             <img className='object-center h-screen max-w-4xl mx-auto' src={err} alt="" />
             <div className='text-center'>
@@ -12,6 +18,7 @@ const ErrorPage = () => {
             </div>
             
         </div>
+        </>
     );
 };
 

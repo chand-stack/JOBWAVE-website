@@ -4,6 +4,7 @@ import useAxios from "../../hook/useAxios";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 const AppliedJob = () => {
 
     const {user} = useContext(AuthContext)
@@ -21,6 +22,7 @@ const AppliedJob = () => {
         }
     })
 
+
     if(isLoading){
         return <div className='flex justify-center'>
         <span className="loading loading-spinner text-info loading-lg mx-auto h-[50vh] text-center"></span>
@@ -35,13 +37,17 @@ const AppliedJob = () => {
 
     return (
         <>
+        <Helmet>
+        <title>JobWave | AppliedJob</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
         <div className=" h-[40vh]" style={{backgroundImage:`url(${banner})`}}>
             <div className="w-full h-full bg-black bg-opacity-80 flex justify-center items-center">
             <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">Applied <span className="text-[#A582F7]">JOB</span></h1>
             </div>
         </div>
 
-<div className="mt-7 p-5 container mx-auto">
+<div className="flex justify-center my-10 container mx-auto">
 <select onChange={categoryHandler} className="select select-primary w-full max-w-xs">
   <option disabled selected>Search By Category</option>
   <option value={'onsite'}>Onsite</option>
@@ -56,7 +62,8 @@ const AppliedJob = () => {
     <span className="text-white text-4xl md:text-7xl font-black my-20">You Have Not Applied Any {category} Job Yet</span>
 </div>: <div className="container mx-auto">
 
-<div className=" grid grid-cols-1 md:grid-cols-2 gap-7 my-20 lg:px-5">
+<div className="min-h-screen">
+<div className=" grid grid-cols-1 md:grid-cols-2 gap-7 my-20 lg:px-5 ">
 
 {
     appliedJobs?.map(job => <div key={job._id} className="flex items-center justify-between rounded-lg lg:justify-around border p-3 md:p-10">
@@ -78,6 +85,7 @@ const AppliedJob = () => {
     </div>)
 }
 
+</div>
 </div>
 
         </div>

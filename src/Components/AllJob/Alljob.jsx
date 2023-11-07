@@ -3,6 +3,7 @@ import banner from '../../assets/jobbannwe.jpg'
 import useAxios from '../../hook/useAxios';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 const Alljob = () => {
     const[alljobs,setAllJobs]=useState([])
 
@@ -34,6 +35,10 @@ const Alljob = () => {
 
     return (
         <>
+        <Helmet>
+        <title>JobWave | AllJob</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
         <div className=" h:[40vh] md:h-[70vh]" style={{backgroundImage:`url(${banner})`}}>
             <div className="w-full h-full bg-black bg-opacity-90 flex justify-center items-center">
             <div className='space-y-5'>

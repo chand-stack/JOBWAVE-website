@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Add from "../../Shared/Add";
 import Banner from "../../Shared/Banner";
 import Companies from "../../Shared/Companies";
@@ -9,6 +10,10 @@ import JobsCard from "../../Shared/JobsCard";
 const Home = () => {
     return (
         <div>
+            <Helmet>
+        <title>JobWave</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
             <Banner></Banner>
           <Add></Add>
           <Companies></Companies>

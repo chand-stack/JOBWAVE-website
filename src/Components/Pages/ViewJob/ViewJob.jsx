@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const ViewJob = () => {
     const [applicantNum,setApplicantNum] = useState(0)
@@ -87,6 +88,11 @@ axios
   });
     }
     return (
+        <>
+        <Helmet>
+        <title>JobWave | Job-Details</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
         <div>
         {
             isLoading ? <div className='flex justify-center'>
@@ -159,6 +165,7 @@ axios
 </div>
         }
         </div>
+        </>
     );
 };
 

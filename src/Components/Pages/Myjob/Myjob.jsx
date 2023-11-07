@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import banner from '../../../assets/jobbannwe.jpg'
+import { Helmet } from "react-helmet";
 
 const Myjob = () => {
 
@@ -65,6 +66,10 @@ console.log(_id);
     console.log(jobs?.data);
     return (
         <>
+        <Helmet>
+        <title>JobWave | My-Jobs</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
         <div className=" h-[40vh]" style={{backgroundImage:`url(${banner})`}}>
             <div className="w-full h-full bg-black bg-opacity-80 flex justify-center items-center">
             <h1 className="text-white text-4xl md:text-7xl lg:text-9xl font-black">My <span className="text-[#A582F7]">JOBS</span></h1>

@@ -98,10 +98,10 @@ const Nav = () => {
     {
         user? <div className="dropdown dropdown-bottom pr-5">
         <label tabIndex={0} className="tooltip  tooltip-bottom" data-tip={user?.displayName}>
-        <img className='h-20 w-20 rounded-full border-2 border-[#A582F7]'  src={user?.photoURL || gif} alt="User" />
+        <img className='h-12 w-12 rounded-full border-2 border-[#A582F7]'  src={user?.photoURL || gif} alt="User" />
         </label>
         <ul tabIndex={0} className="dropdown-content right-3/4 z-30 menu  shadow bg-base-100 rounded-box">
-          <li><button onClick={logOutHandler} className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Log out</button></li>
+          <li><button onClick={logOutHandler} className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 pt-4 text-white'>Log out</button></li>
           
         </ul>
       </div> : <Link to="/login" className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white'>Login</Link>

@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../AuthProvider/AuthProvider'
 import Swal from 'sweetalert2'
+import { Helmet } from 'react-helmet'
 const Login = () => {
     const {loginUser,loginWithGoogle} = useContext(AuthContext)
 
@@ -53,16 +54,25 @@ const Login = () => {
             console.log(error);
         })
     }
+    
     return (
+      
+      <>
+      <Helmet>
+        <title>JobWave | Login</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
         <div className='container mx-auto '>
+          
+            
             <div className=" mt-10 px-5 lg:px-10">
   <div className="flex flex-col-reverse justify-around md:flex-row items-center">
     <div className="text-center lg:text-left">
       <img className='lg:max-w-md mx-auto md:mx-0' src={img} alt="" />
     </div>
-    <div className="card  w-full shadow-2xl border-2 border-[#A582F7] max-w-md flex-grow">
+    <div className="card  w-full shadow-2xl border-2 border-[#A582F7] max-w-md flex-grow bg-[#111]">
         <h1 className='font-bold text-2xl md:text-3xl text-center text-white py-5'>Login <span className='text-[#A582F7]'>Now</span></h1>
-      <form onSubmit={loginHandler} className="card-body bg-[#111]">
+      <form onSubmit={loginHandler} className="card-body ">
         <div className="form-control">
           <label className="label">
             <span className="label-text text-white flex items-center gap-1"><MdAttachEmail className='text-[#A582F7] text-2xl'/>Email</span>
@@ -88,7 +98,9 @@ const Login = () => {
     </div>
   </div>
 </div>
+
         </div>
+        </>
     );
 };
 

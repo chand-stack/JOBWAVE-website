@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxios from '../../../hook/useAxios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 const AddJob = () => {
     const axios = useAxios()
     const [startDate, setStartDate] = useState(new Date());
@@ -56,7 +57,14 @@ axios.post("/job-add", job)
     }
 
     return (
+        
+        <>
+        <Helmet>
+        <title>JobWave | AddJob</title>
+        <meta name="description" content="My page description" />
+      </Helmet>
         <div className="container mx-auto grid md:grid-cols-2">
+            
             <div className='hidden md:flex flex-col'>
           <img src={addjob} alt="" />
           <h1 className='text-white text-center text-3xl md:text-4xl font-black'>CREATE A <span className='text-[#7367F0]'>JOB</span> POST  FOR BUILD A BETTER  <span className='text-[#7367F0]'>WORLD!</span></h1>
@@ -114,6 +122,7 @@ axios.post("/job-add", job)
 </form>
             
         </div>
+        </>
     );
 };
 
