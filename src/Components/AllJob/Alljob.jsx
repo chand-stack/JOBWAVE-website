@@ -1,9 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import banner from '../../assets/jobbannwe.jpg'
 import useAxios from '../../hook/useAxios';
-import { FaPeopleGroup } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
-import img from '../../assets/icons8-user.gif'
 import { useState } from 'react';
 const Alljob = () => {
     const[alljobs,setAllJobs]=useState([])
@@ -53,32 +51,67 @@ const Alljob = () => {
         isLoading? <div className='flex justify-center'>
             <span className="loading loading-spinner text-info loading-lg mx-auto h-[50vh] text-center"></span>
         </div> :
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5 px-3'>
-
-        {
-            alljobs?.map(job => <div key={job._id} className='space-y-3 text-white bg-[#111] border border-gray-700 p-3 rounded-lg'>
-              <div className='flex items-center gap-3'>
-              <img className='rounded-full' src={img} alt="" />
-              <div>
-              <h1 className='text-xl font-semibold'>{job.userName}</h1>
-                <p>Posted on {new Date(job.postingDate).toLocaleString()}</p>
-              </div>
-              </div>
-              <h1 className='text-2xl md:text-3xl font-semibold'>{job.title}</h1>
-              <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
-              <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job.salary}  per year</p>
-              <div className='flex justify-between'>
-                <Link to={`/jobDetail/${job._id}`}><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button></Link>
-                <div className='flex items-center gap-2'>
-                    <FaPeopleGroup className='text-2xl'/><p>{job.applicants} Applied</p>
+        
+        <div className="overflow-x-auto bg-[#111] rounded-lg my-16 text-white">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr className='text-white'>
+        <th>User Name</th>
+        <th>Job Title</th>
+        <th>Job Posting Date</th>
+        <th>Deadline</th>
+        <th>Salary Range</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    {
+        alljobs?.map(job => <tbody key={job._id}>
+            {/* row 1 */}
+            <tr>
+              <td>
+                <div className="flex items-center space-x-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img src={job?.photo} alt="Avatar Tailwind CSS Component" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-bold">{job?.userName}</div>
+                  </div>
                 </div>
-              </div>
-
-            </div>)
-        }
-
-      </div>
+              </td>
+              <td>
+                {job?.title}
+                <br/>
+                <span className="badge badge-ghost badge-sm">{job?.category}</span>
+              </td>
+              <td>{new Date(job?.postingDate).toLocaleDateString()}</td>
+              <td>{new Date(job?.deadline).toLocaleDateString()}</td>
+              <td>${job?.salary}</td>
+              <th>
+              <Link to={`/jobDetail/${job._id}`}><button className='btn btn-sm bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>View Details</button></Link>
+              </th>
+            </tr>
+          </tbody>)
+    }
+    {/* foot */}
+    <tfoot>
+      <tr className='text-white'>
+      <th>User Name</th>
+        <th>Job Title</th>
+        <th>Job Posting Date</th>
+        <th>Deadline</th>
+        <th>Salary Range</th>
+        <th>Detail</th>
+      </tr>
+    </tfoot>
+    
+  </table>
+</div>
       }
+
+
 
         </div>
         

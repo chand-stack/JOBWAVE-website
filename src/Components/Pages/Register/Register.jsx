@@ -92,7 +92,7 @@ const Register = () => {
     </div>
     <div className="card  w-full shadow-2xl border-2 border-[#A582F7] max-w-md flex-grow">
         <h1 className='font-bold text-2xl md:text-3xl text-center text-white py-5'>Signup <span className='text-[#A582F7]'>Now</span></h1>
-      <form onSubmit={registerHandler} className="card-body">
+      <form onSubmit={registerHandler} className="card-body bg-[#111]">
         <div className="form-control">
           <label className="label">
             <span className="label-text text-white flex items-center gap-1"><BiSolidUser className='text-[#A582F7] text-2xl'/> Name</span>

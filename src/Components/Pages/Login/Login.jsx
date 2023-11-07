@@ -62,7 +62,7 @@ const Login = () => {
     </div>
     <div className="card  w-full shadow-2xl border-2 border-[#A582F7] max-w-md flex-grow">
         <h1 className='font-bold text-2xl md:text-3xl text-center text-white py-5'>Login <span className='text-[#A582F7]'>Now</span></h1>
-      <form onSubmit={loginHandler} className="card-body">
+      <form onSubmit={loginHandler} className="card-body bg-[#111]">
         <div className="form-control">
           <label className="label">
             <span className="label-text text-white flex items-center gap-1"><MdAttachEmail className='text-[#A582F7] text-2xl'/>Email</span>

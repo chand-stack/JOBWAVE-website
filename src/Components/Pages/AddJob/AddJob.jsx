@@ -61,7 +61,7 @@ axios.post("/job-add", job)
           <img src={addjob} alt="" />
           <h1 className='text-white text-center text-3xl md:text-4xl font-black'>CREATE A <span className='text-[#7367F0]'>JOB</span> POST  FOR BUILD A BETTER  <span className='text-[#7367F0]'>WORLD!</span></h1>
             </div>
-<form onSubmit={addJobHandler} className=' space-y-3 px-10 md:px-5 lg:px-28 border-2 rounded-lg py-10 m-5 lg:m-10 border-[#7367F0]'>
+<form onSubmit={addJobHandler} className=' space-y-3 px-10 md:px-5 lg:px-28 bg-[#111] border-2 rounded-lg py-10 m-5 lg:m-10 border-[#7367F0]'>
 
     <div>
         <h1 className='text-white text-xl font-semibold'>Job Title</h1>

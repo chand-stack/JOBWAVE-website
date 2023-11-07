@@ -80,7 +80,8 @@ console.log(_id);
 
         {
             myjobs?.map(job => <div key={job?._id} className='space-y-3 bg-[#111] p-3 rounded-lg text-white'>
-              <div className='flex items-center gap-3'>
+              <div className="flex flex-col">
+              <div className='flex flex-grow items-center gap-3'>
               <img className='rounded-full h-11' src={job?.photo} alt="User" />
               <div>
               <h1 className='text-xl font-semibold'>{job?.userName}</h1>
@@ -88,7 +89,7 @@ console.log(_id);
               </div>
               </div>
               
-              <div className="flex flex-col">
+              <div className="flex flex-col flex-grow">
               <p><span className='text-xl font-semibold text-[#A582F7]'>Title: </span> <span className='text-lg'>{job?.title}</span></p>
               <p className="flex-grow"><span className='text-xl font-semibold text-[#A582F7]'>Description: </span> <span className='text-lg'>{job?.description}</span></p>
               <p><span className='text-xl font-semibold text-[#A582F7]'>Applicants: </span> <span className='text-lg'>{job?.applicants}</span></p>
@@ -96,7 +97,8 @@ console.log(_id);
               <p><span className='text-xl font-semibold text-[#A582F7]'>Application Deadline: </span> <span className='text-lg'>{new Date(job.deadline).toLocaleDateString()}</span></p>
               <p className='text-xl'><span className='text-[#A582F7]'>Salary Range:</span> ${job?.salary}  per year</p>
               </div>
-              <div className='flex justify-between'>
+              </div>
+              <div className='flex justify-between flex-grow'>
                 <Link to={`/update/${job._id}`}><button className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>Update Details</button></Link>
                <button onClick={()=>deleteHandler(job?._id)}  className='btn bg-gradient-to-t from-red-600 from-10% via-red-500 via-30% to-red-400 to-90% border-none text-white'>Delete</button>
               </div>
