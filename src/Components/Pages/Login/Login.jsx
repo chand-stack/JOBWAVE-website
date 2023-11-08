@@ -7,9 +7,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import useAxios from "../../../hook/useAxios";
 const Login = () => {
   const { loginUser, loginWithGoogle } = useContext(AuthContext);
-
+ const axios = useAxios()
   const navigate = useNavigate();
   const location = useLocation();
   const loginHandler = (e) => {
@@ -26,6 +27,16 @@ const Login = () => {
           "Welcome to our community. Explore and discover exciting career opportunities. Lets get started!",
           "success"
         );
+        axios
+        .post("/api/v1/jwt", { email })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.error("Axios Error:", error);
+          console.error("Error Message:", error.message);
+          console.error("Error Response:", error.response);
+        });
         navigate(location.state || "/");
       })
       .catch((err) => {

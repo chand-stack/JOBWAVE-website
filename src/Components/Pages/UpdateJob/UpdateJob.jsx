@@ -23,7 +23,7 @@ const UpdateJob = () => {
   const { data: jobDetail, isLoading } = useQuery({
     queryKey: ["jobDetail", param.id],
     queryFn: async () => {
-      const res = axios.get(`/view-job/${param.id}`);
+      const res = axios.get(`/api/v1/view-job/${param.id}`);
       return res;
     },
   });
