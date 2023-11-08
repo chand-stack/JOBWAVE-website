@@ -36,9 +36,11 @@ const JobPost = () => {
           forming a vibrant tapestry of humanity.!
         </p>
         <div>
-        <Link to="/addjob"><button className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white">
-          Post A Job
-        </button></Link>
+          <Link to="/addjob">
+            <button className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white">
+              Post A Job
+            </button>
+          </Link>
         </div>
       </div>
     </div>

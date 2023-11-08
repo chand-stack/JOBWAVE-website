@@ -1,11 +1,38 @@
 import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+// import { useContext } from "react";
+// import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const intance = axios.create({
-    baseURL:"http://localhost:5000/api/v1",
-    withCredentials: true
-})
+  baseURL: "http://localhost:5000/api/v1",
+  withCredentials: true,
+});
 const useAxios = () => {
-    return intance
+  // const {logOut} = useContext(AuthContext)
+
+  // const navigate = useNavigate()
+
+  useEffect(() => {
+    intance.interceptors.response.use(
+      (res) => {
+        return res;
+      },
+      (error) => {
+        console.log("error tracked in the interceptor", error.response);
+        if (error.response.status === 401 || error.response.status === 403) {
+          console.log("logout the user");
+          // logOut()
+          //     .then(() => {
+          //         navigate('/login')
+          //     })
+          //     .catch(error => console.log(error))
+        }
+      }
+    );
+  }, []);
+
+  return intance;
 };
 
 export default useAxios;

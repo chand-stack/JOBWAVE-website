@@ -18,7 +18,9 @@ const Footer = () => {
         <nav>
           <div className="grid grid-flow-col gap-4">
             <div className="text-white text-center">
-              <p className="text-2xl font-semibold py-3">Find Us On Social Media:</p>
+              <p className="text-2xl font-semibold py-3">
+                Find Us On Social Media:
+              </p>
               <div className="text-white flex items-center gap-4 text-5xl justify-center">
                 <LiaFacebook />
                 <AiOutlineInstagram />
@@ -29,10 +31,10 @@ const Footer = () => {
         </nav>
       </footer>
       <footer className="footer footer-center p-4  text-white -mt-5 border-t">
-  <aside>
-    <p>Copyright © 2023 - All right reserved by JOBWAVE</p>
-  </aside>
-</footer>
+        <aside>
+          <p>Copyright © 2023 - All right reserved by JOBWAVE</p>
+        </aside>
+      </footer>
     </div>
   );
 };

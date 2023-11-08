@@ -1,129 +1,195 @@
-import { useContext } from 'react';
-import addjob from '../../../assets/addjob.png'
-import { AuthContext } from '../../../AuthProvider/AuthProvider';
-import { useState } from 'react';
+import { useContext } from "react";
+import addjob from "../../../assets/addjob.png";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import useAxios from '../../../hook/useAxios';
-import Swal from 'sweetalert2';
-import { Helmet } from 'react-helmet';
+import useAxios from "../../../hook/useAxios";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 const AddJob = () => {
-    const axios = useAxios()
-    const [startDate, setStartDate] = useState(new Date());
-    const [lastDate,setLastDate] = useState(new Date())
-    const [jobCategory,setJobCategory] = useState(null)
-    const {user} = useContext(AuthContext)
+  const axios = useAxios();
+  const [startDate, setStartDate] = useState(new Date());
+  const [lastDate, setLastDate] = useState(new Date());
+  const [jobCategory, setJobCategory] = useState(null);
+  const { user } = useContext(AuthContext);
 
-    const categoryHandler = e =>{
-        setJobCategory(e.target.value)
-    }
+  const categoryHandler = (e) => {
+    setJobCategory(e.target.value);
+  };
 
-    // console.log(jobCategory);
-    // if (startDate <= lastDate) {
-    //     console.log("You can apply for this job.");
-    //   } else {
-    //     console.log("Sorry, the application period for this job has ended.");
-    //   }
+  // console.log(jobCategory);
+  // if (startDate <= lastDate) {
+  //     console.log("You can apply for this job.");
+  //   } else {
+  //     console.log("Sorry, the application period for this job has ended.");
+  //   }
 
-      const addJobHandler = e => {
-        e.preventDefault()
-        const title = e.target.title.value 
-        const photo = e.target.photo.value 
-        const userName = e.target.user.value 
-        const category = jobCategory 
-        const salary = e.target.salary.value 
-        const postingDate = startDate
-        const deadline = lastDate
-        const applicants = parseInt(e.target.applicants.value) 
-        const email = user?.email
-        const description = e.target.description.value 
-        // console.log(title,photo,userName,category,salary,postingDate,deadline,applicants,email);
-        const job = {
-            title,photo,userName,category,salary,postingDate,deadline,applicants,email,description
-        }
-console.log(typeof applicants);
+  const addJobHandler = (e) => {
+    e.preventDefault();
+    const title = e.target.title.value;
+    const photo = e.target.photo.value;
+    const userName = e.target.user.value;
+    const category = jobCategory;
+    const salary = e.target.salary.value;
+    const postingDate = startDate;
+    const deadline = lastDate;
+    const applicants = parseInt(e.target.applicants.value);
+    const email = user?.email;
+    const description = e.target.description.value;
+    // console.log(title,photo,userName,category,salary,postingDate,deadline,applicants,email);
+    const job = {
+      title,
+      photo,
+      userName,
+      category,
+      salary,
+      postingDate,
+      deadline,
+      applicants,
+      email,
+      description,
+    };
+    console.log(typeof applicants);
 
-axios.post("/job-add", job)
-.then(res => {
-    if(res.data.insertedId){
+    axios.post("/job-add", job).then((res) => {
+      if (res.data.insertedId) {
         Swal.fire(
-            'Congratulations!',
-            'Your job posting has been submitted successfully.',
-            'success'
-          )
-    }
-})
+          "Congratulations!",
+          "Your job posting has been submitted successfully.",
+          "success"
+        );
+      }
+    });
+  };
 
-    }
-
-    return (
-        
-        <>
-        <Helmet>
+  return (
+    <>
+      <Helmet>
         <title>JobWave | AddJob</title>
         <meta name="description" content="My page description" />
       </Helmet>
-        <div className="container mx-auto grid md:grid-cols-2">
-            
-            <div className='hidden md:flex flex-col'>
+      <div className="container mx-auto grid md:grid-cols-2">
+        <div className="hidden md:flex flex-col">
           <img src={addjob} alt="" />
-          <h1 className='text-white text-center text-3xl md:text-4xl font-black'>CREATE A <span className='text-[#7367F0]'>JOB</span> POST  FOR BUILD A BETTER  <span className='text-[#7367F0]'>WORLD!</span></h1>
+          <h1 className="text-white text-center text-3xl md:text-4xl font-black">
+            CREATE A <span className="text-[#7367F0]">JOB</span> POST FOR BUILD
+            A BETTER <span className="text-[#7367F0]">WORLD!</span>
+          </h1>
+        </div>
+        <form
+          onSubmit={addJobHandler}
+          className=" space-y-3 px-10 md:px-5 lg:px-28 bg-[#111] border-2 rounded-lg py-10 m-5 lg:m-10 border-[#7367F0]"
+        >
+          <div>
+            <h1 className="text-white text-xl font-semibold">Job Title</h1>
+            <input
+              type="text"
+              placeholder="Job title here"
+              name="title"
+              className="input input-bordered input-primary w-full"
+            />
+          </div>
+          <div>
+            <h1 className="text-white text-xl font-semibold">
+              Picture URL of the Job Banner
+            </h1>
+            <input
+              type="url"
+              name="photo"
+              placeholder="Job Banne URL"
+              className="input input-bordered input-primary w-full"
+            />
+          </div>
+          <div>
+            <h1 className="text-white text-xl font-semibold">User</h1>
+            <input
+              type="text"
+              name="user"
+              value={user?.displayName}
+              readOnly
+              placeholder="Job title here"
+              className="input input-bordered input-primary w-full"
+            />
+          </div>
+          <div>
+            <h1 className="text-white text-xl font-semibold">Job Category</h1>
+            <select
+              className="select select-primary w-full"
+              onChange={categoryHandler}
+            >
+              <option disabled selected>
+                Job Category
+              </option>
+              <option value={"onsite"}>On Site</option>
+              <option value={"remote"}>Remote</option>
+              <option value={"part-time"}>Part-Time</option>
+              <option value={"hybrid"}>Hybrid</option>
+            </select>
+          </div>
+          <div>
+            <h1 className="text-white text-xl font-semibold">Salary Range</h1>
+            <input
+              type="text"
+              name="salary"
+              placeholder="E.g. 30,000-60,000"
+              className="input input-bordered input-primary w-full"
+            />
+          </div>
+          <div className="lg:flex justify-between">
+            <div className=" space-y-3">
+              <h1 className="text-white text-xl font-semibold">
+                Job Posting Date
+              </h1>
+              <DatePicker
+                className="py-3 w-full rounded-lg"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
             </div>
-<form onSubmit={addJobHandler} className=' space-y-3 px-10 md:px-5 lg:px-28 bg-[#111] border-2 rounded-lg py-10 m-5 lg:m-10 border-[#7367F0]'>
-
-    <div>
-        <h1 className='text-white text-xl font-semibold'>Job Title</h1>
-        <input type="text" placeholder="Job title here" name='title' className="input input-bordered input-primary w-full" />
-    </div>
-    <div>
-        <h1 className='text-white text-xl font-semibold'>Picture URL of the Job Banner</h1>
-        <input type="url" name='photo' placeholder="Job Banne URL" className="input input-bordered input-primary w-full" />
-    </div>
-    <div>
-        <h1 className='text-white text-xl font-semibold'>User</h1>
-        <input type="text" name='user' value={user?.displayName} readOnly placeholder="Job title here" className="input input-bordered input-primary w-full" />
-    </div>
-    <div>
-    <h1 className='text-white text-xl font-semibold'>Job Category</h1>
-        <select className="select select-primary w-full" onChange={categoryHandler}>
-        <option disabled selected>Job Category</option>
-  <option value={'onsite'}>On Site</option>
-  <option value={'remote'}>Remote</option>
-  <option value={'part-time'}>Part-Time</option>
-  <option value={'hybrid'}>Hybrid</option>
-</select>
-    </div>
-    <div>
-        <h1 className='text-white text-xl font-semibold'>Salary Range</h1>
-        <input type="text" name='salary' placeholder="E.g. 30,000-60,000" className="input input-bordered input-primary w-full" />
-    </div>
-    <div className='lg:flex justify-between'>
-        <div className=' space-y-3'>
-        <h1 className='text-white text-xl font-semibold'>Job Posting Date</h1>
-        <DatePicker className='py-3 w-full rounded-lg' selected={startDate} onChange={(date) => setStartDate(date)} />
-        </div>
-        <div className=' space-y-3'>
-        <h1 className='text-white text-xl font-semibold'>Application Deadline</h1>
-        <DatePicker className='py-3 w-full rounded-lg' selected={lastDate} onChange={(date) => setLastDate(date)} />
-        </div>
-    </div>
-    <div>
-        <h1 className='text-white text-xl font-semibold'>Job Description</h1>
-        <textarea name='description' className="textarea textarea-primary w-full" placeholder="Description"></textarea>
-    </div>
-    <div>
-        <h1 className='text-white text-xl font-semibold'>Job Applicants</h1>
-        <input name='applicants' value={0} type='number' className="textarea textarea-primary w-full" placeholder="Job Applicants"/>
-    </div>
-    <div className='flex justify-end'>
-        <button type='submit' className='btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white'>Add A Job</button>
-    </div>
-
-</form>
-            
-        </div>
-        </>
-    );
+            <div className=" space-y-3">
+              <h1 className="text-white text-xl font-semibold">
+                Application Deadline
+              </h1>
+              <DatePicker
+                className="py-3 w-full rounded-lg"
+                selected={lastDate}
+                onChange={(date) => setLastDate(date)}
+              />
+            </div>
+          </div>
+          <div>
+            <h1 className="text-white text-xl font-semibold">
+              Job Description
+            </h1>
+            <textarea
+              name="description"
+              className="textarea textarea-primary w-full"
+              placeholder="Description"
+            ></textarea>
+          </div>
+          <div>
+            <h1 className="text-white text-xl font-semibold">Job Applicants</h1>
+            <input
+              name="applicants"
+              value={0}
+              type="number"
+              className="textarea textarea-primary w-full"
+              placeholder="Job Applicants"
+            />
+          </div>
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white"
+            >
+              Add A Job
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
 };
 
 export default AddJob;
