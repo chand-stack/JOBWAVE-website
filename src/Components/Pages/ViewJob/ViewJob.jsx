@@ -42,6 +42,10 @@ const ViewJob = () => {
     }
 
     document.getElementById("my_modal_1").showModal();
+    document.getElementById("appliedBtn").addEventListener('click', () => {
+      document.getElementById("my_modal_1").close();
+      console.log("Clicked");
+    });
   };
 
   const applysubmit = (e) => {
@@ -211,18 +215,19 @@ const ViewJob = () => {
 
                         <div className="modal-action">
                           <form method="dialog">
-                          <button
-                            type="submit"
-                            className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white ml-4"
-                          >
-                            Submit
-                          </button>
+              
                             {/* if there is a button in form, it will close the modal */}
                             <button className="btn btn-outline text-[#7367F0]">
                               Close
                             </button>
                           </form>
-                          
+                          <button
+                          id="appliedBtn"
+                            type="submit"
+                            className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white ml-4"
+                          >
+                            Submit
+                          </button>
                         </div>
                       </form>
                     </div>
