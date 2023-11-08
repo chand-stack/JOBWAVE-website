@@ -52,7 +52,7 @@ const AddJob = () => {
     };
     console.log(typeof applicants);
 
-    axios.post("/job-add", job).then((res) => {
+    axios.post("/api/v1/job-add", job).then((res) => {
       if (res.data.insertedId) {
         Swal.fire(
           "Congratulations!",

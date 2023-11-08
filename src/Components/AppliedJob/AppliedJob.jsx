@@ -16,7 +16,7 @@ const AppliedJob = () => {
     queryKey: ["appliedjob", email, category],
     queryFn: async () => {
       const res = await axios.get(
-        `/apply-job?email=${email}&category=${category}`
+        `/api/v1/apply-job?email=${email}&category=${category}`
       );
       setAppliedJob(res?.data);
       return res;

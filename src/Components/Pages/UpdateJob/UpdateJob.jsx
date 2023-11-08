@@ -70,7 +70,7 @@ const UpdateJob = () => {
     console.log(job);
 
     axios
-      .patch(`/view-job/update/${jobDetail?.data?._id}`, job)
+      .patch(`/api/v1/view-job/update/${jobDetail?.data?._id}`, job)
       .then((res) => {
         if (res.data) {
           Swal.fire({

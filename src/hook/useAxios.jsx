@@ -5,7 +5,7 @@ import { useEffect } from "react";
 // import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const intance = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: "https://jobwave-server.vercel.app",
   withCredentials: true,
 });
 const useAxios = () => {

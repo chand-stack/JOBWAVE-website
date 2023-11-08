@@ -14,7 +14,7 @@ const JobsCard = () => {
   const { data: jobs, isLoading } = useQuery({
     queryKey: ["jobs", category],
     queryFn: async () => {
-      const res = await axios.get(`/all-job?category=${category}`);
+      const res = await axios.get(`/api/v1/all-job?category=${category}`);
       return res;
     },
   });

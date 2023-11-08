@@ -11,7 +11,7 @@ const Alljob = () => {
   const { data: jobs, isLoading } = useQuery({
     queryKey: ["jobs"],
     queryFn: async () => {
-      const res = await axios.get(`/all-job`);
+      const res = await axios.get(`/api/v1/all-job`);
       setAllJobs(res?.data);
       return res;
     },

@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
       console.log({ email });
       if (currentUser.email) {
         axios
-          .post("/jwt", { email })
+          .post("/api/v1/jwt", { email })
           .then((res) => {
             console.log(res);
           })

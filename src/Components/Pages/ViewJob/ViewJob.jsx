@@ -59,7 +59,7 @@ const ViewJob = () => {
     const jobSubmit = { name, email, resume, category, photo, salary, title };
     // console.log(jobSubmit);
 
-    axios.post("/apply-job", jobSubmit).then((res) => {
+    axios.post("/api/v1/apply-job", jobSubmit).then((res) => {
       if (res.data.insertedId) {
         Swal.fire(
           "Congratulations!",
@@ -79,7 +79,7 @@ const ViewJob = () => {
     };
 
     axios
-      .patch(`/view-job/${jobDetail?.data?._id}`)
+      .patch(`/api/v1/view-job/${jobDetail?.data?._id}`)
       .then((res) => {
         console.log(res);
         setApplicantNum(1);
