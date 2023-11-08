@@ -24,7 +24,7 @@ const ViewJob = () => {
   console.log(jobDetail?.data);
 
   const applyHandler = () => {
-    if (user.email == jobDetail.data.email) {
+    if (user?.email == jobDetail?.data?.email) {
       Swal.fire({
         icon: "error",
         title: "Oops!",
@@ -60,7 +60,7 @@ const ViewJob = () => {
     // console.log(jobSubmit);
 
     axios.post("/api/v1/apply-job", jobSubmit).then((res) => {
-      if (res.data.insertedId) {
+      if (res?.data?.insertedId) {
         Swal.fire(
           "Congratulations!",
           "Your job application has been submitted successfully..",
