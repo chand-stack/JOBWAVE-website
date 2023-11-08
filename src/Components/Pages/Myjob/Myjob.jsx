@@ -35,7 +35,7 @@ const Myjob = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`/user/delete-job/${_id}`)
+          .delete(`/api/v1/user/delete-job/${_id}`)
           .then((response) => {
             Swal.fire({
               title: "Deleted!",

@@ -17,7 +17,7 @@ const ViewJob = () => {
   const { data: jobDetail, isLoading } = useQuery({
     queryKey: ["jobDetail", param.id],
     queryFn: async () => {
-      const res = axios.get(`/view-job/${param.id}`);
+      const res = axios.get(`/api/v1/view-job/${param.id}`);
       return res;
     },
   });
@@ -32,7 +32,7 @@ const ViewJob = () => {
       });
       return;
     }
-    if (new Date() <= new Date(jobDetail?.data?.deadline)) {
+    if (!(new Date() <= new Date(jobDetail?.data?.deadline))) {
       Swal.fire({
         icon: "error",
         title: "Oops!",
@@ -211,17 +211,18 @@ const ViewJob = () => {
 
                         <div className="modal-action">
                           <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn btn-outline text-[#7367F0]">
-                              Close
-                            </button>
-                          </form>
                           <button
                             type="submit"
                             className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white ml-4"
                           >
                             Submit
                           </button>
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn btn-outline text-[#7367F0]">
+                              Close
+                            </button>
+                          </form>
+                          
                         </div>
                       </form>
                     </div>
