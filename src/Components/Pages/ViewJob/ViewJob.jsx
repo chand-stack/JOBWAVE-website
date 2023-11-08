@@ -6,6 +6,7 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
+import emailjs from '@emailjs/browser';
 
 const ViewJob = () => {
     const [applicantNum,setApplicantNum] = useState(0)
@@ -59,7 +60,7 @@ const ViewJob = () => {
         // console.log(name,email,resume,category,photo,salary,title);
 
         const jobSubmit = {name,email,resume,category,photo,salary,title}
-        console.log(jobSubmit);
+        // console.log(jobSubmit);
 
         axios.post("/apply-job", jobSubmit)
 .then(res => {
@@ -73,13 +74,25 @@ const ViewJob = () => {
     }
 })
 
-
+const emailParams = {
+    from:jobDetail?.data?.email,
+    to: user?.email,
+    subject: 'Job Application Successful',
+    text: `Congratulations! ${name} Your job application has been successfully received and processed. We will be in touch with you soon regarding the next steps.Thank you for applying!`,
+  };
 
 axios
   .patch(`/view-job/${jobDetail?.data?._id}`)
   .then((res) => {
     console.log(res);
     setApplicantNum(1)
+    emailjs.send('service_6qn1tx4', 'template_vgkjy0n', emailParams,"WgjxlFQTro4BIFwXu")
+  .then((result) => {
+    console.log(result.text);
+  })
+  .catch((error) => {
+    console.error('Email.js Error:', error);
+  });
   })
   .catch((error) => {
     console.error("Axios Error:", error);

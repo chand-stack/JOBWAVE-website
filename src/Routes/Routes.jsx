@@ -11,6 +11,7 @@ import AppliedJob from "../Components/AppliedJob/AppliedJob";
 import Alljob from "../Components/AllJob/Alljob";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Blog from "../Components/Pages/Blog/Blog";
 
 
 const routes = createBrowserRouter([
@@ -54,6 +55,10 @@ const routes = createBrowserRouter([
             {
                 path:"/alljobs",
                 element: <Alljob></Alljob>
+            },
+            {
+                path:"/blog",
+                element:<Blog></Blog>
             }
         ]
     }
