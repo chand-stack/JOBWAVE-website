@@ -32,7 +32,7 @@ const ViewJob = () => {
       });
       return;
     }
-    if (!(new Date() <= new Date(jobDetail?.data?.deadline))) {
+    if (new Date() <= new Date(jobDetail?.data?.deadline)) {
       Swal.fire({
         icon: "error",
         title: "Oops!",
