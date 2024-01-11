@@ -19,7 +19,7 @@ const Login = () => {
     const email = form.email.value;
     const passowrd = form.password.value;
 
-    console.log(email, passowrd);
+    // console.log(email, passowrd);
     loginUser(email, passowrd)
       .then(() => {
         Swal.fire(

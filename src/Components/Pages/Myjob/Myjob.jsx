@@ -44,7 +44,7 @@ const Myjob = () => {
             });
             const remaining = myjobs.filter((job) => job._id !== _id);
             setMyJobs(remaining);
-            console.log(response);
+            // console.log(response);
           })
           .catch((error) => {
             console.error(error);
@@ -52,10 +52,10 @@ const Myjob = () => {
       }
     });
 
-    console.log(_id);
+    // console.log(_id);
   };
 
-  console.log(jobs?.data);
+  // console.log(jobs?.data);
   return (
     <>
       <Helmet>
@@ -70,88 +70,91 @@ const Myjob = () => {
         </div>
       </div>
       <div className="container mx-auto">
-        {myjobs.length == 0 || isLoading ? (
+        { isLoading ? (
           <div className="flex justify-center">
             <span className="loading loading-spinner text-info loading-lg mx-auto h-[50vh] text-center"></span>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5 px-3">
+        ) : myjobs.length == 0 ?  (<div className="flex justify-center h-[50vh] items-center">
+        <p className="text-lg md:text-2xl text-white">You haven&lsquo;t added any jobs yet. Start building your dream team today!</p>
+      </div>) : (
+          <div className="overflow-x-auto bg-[#111] rounded-lg my-16 text-white">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr className="text-white">
+                <th>User Name</th>
+                <th>Job Title</th>
+                <th>Job Posting Date</th>
+                <th>Deadline</th>
+                <th>Salary Range</th>
+                <th>Detail</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
             {myjobs?.map((job) => (
-              <div
-                key={job?._id}
-                className="space-y-3 bg-[#111] p-3 flex flex-col rounded-lg text-white"
-              >
-                <div className="flex flex-col flex-grow">
-                  <div className="flex flex-grow items-center gap-3">
-                    <img
-                      className="rounded-full h-11"
-                      src={job?.photo}
-                      alt="User"
-                    />
-                    <div>
-                      <h1 className="text-xl font-semibold">{job?.userName}</h1>
-                      <p>
-                        Posted on {new Date(job?.postingDate).toLocaleString()}
-                      </p>
+              <tbody key={job._id}>
+                {/* row 1 */}
+                <tr>
+                  <td>
+                    <div className="flex items-center space-x-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
+                          <img
+                            src={job?.photo}
+                            alt="Avatar Tailwind CSS Component"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{job?.userName}</div>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="flex flex-col flex-grow">
-                    <p>
-                      <span className="text-xl font-semibold text-[#A582F7]">
-                        Title:{" "}
-                      </span>{" "}
-                      <span className="text-lg">{job?.title}</span>
-                    </p>
-                    <p className="flex-grow">
-                      <span className="text-xl font-semibold text-[#A582F7]">
-                        Description:{" "}
-                      </span>{" "}
-                      <span className="text-lg">{job?.description}</span>
-                    </p>
-                    <p>
-                      <span className="text-xl font-semibold text-[#A582F7]">
-                        Applicants:{" "}
-                      </span>{" "}
-                      <span className="text-lg">{job?.applicants}</span>
-                    </p>
-                    <p>
-                      <span className="text-xl font-semibold text-[#A582F7]">
-                        Category:{" "}
-                      </span>{" "}
-                      <span className="text-lg">{job?.category}</span>
-                    </p>
-                    <p>
-                      <span className="text-xl font-semibold text-[#A582F7]">
-                        Application Deadline:{" "}
-                      </span>{" "}
-                      <span className="text-lg">
-                        {new Date(job.deadline).toLocaleDateString()}
-                      </span>
-                    </p>
-                    <p className="text-xl">
-                      <span className="text-[#A582F7]">Salary Range:</span> $
-                      {job?.salary} per year
-                    </p>
-                  </div>
-                </div>
-                <div className="flex justify-between">
-                  <Link to={`/update/${job._id}`}>
-                    <button className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white">
-                      Update Details
-                    </button>
-                  </Link>
-                  <button
-                    onClick={() => deleteHandler(job?._id)}
-                    className="btn bg-gradient-to-t from-red-600 from-10% via-red-500 via-30% to-red-400 to-90% border-none text-white"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
+                  </td>
+                  <td>
+                    {job?.title}
+                    <br />
+                    <span className="badge badge-ghost badge-sm">
+                      {job?.category}
+                    </span>
+                  </td>
+                  <td>{new Date(job?.postingDate).toLocaleDateString()}</td>
+                  <td>{new Date(job?.deadline).toLocaleDateString()}</td>
+                  <td>${job?.salary}</td>
+                  <th>
+                    <Link to={`/update/${job._id}`}>
+                      <button className="btn btn-sm bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white">
+                        Update
+                      </button>
+                    </Link>
+                  </th>
+                  <th>
+                    
+                      <button
+                      onClick={() => deleteHandler(job?._id)}
+                      className="btn btn-sm bg-gradient-to-t from-red-600 from-10% via-red-500 via-30% to-red-400 to-90% border-none text-white">
+                        Delete
+                      </button>
+                   
+                  </th>
+                </tr>
+              </tbody>
             ))}
-          </div>
+            {/* foot */}
+            <tfoot>
+              <tr className="text-white">
+                <th>User Name</th>
+                <th>Job Title</th>
+                <th>Job Posting Date</th>
+                <th>Deadline</th>
+                <th>Salary Range</th>
+                <th>Detail</th>
+                <th>Delete</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
         )}
+        
       </div>
     </>
   );

@@ -18,7 +18,7 @@ const UpdateJob = () => {
   const { user } = useContext(AuthContext);
 
   const param = useParams();
-  console.log(param);
+  // console.log(param);
 
   const { data: jobDetail, isLoading } = useQuery({
     queryKey: ["jobDetail", param.id],
@@ -28,7 +28,7 @@ const UpdateJob = () => {
     },
   });
 
-  console.log(jobDetail?.data);
+  // console.log(jobDetail?.data);
 
   const categoryHandler = (e) => {
     setJobCategory(e.target.value);
@@ -67,7 +67,7 @@ const UpdateJob = () => {
       email,
       description,
     };
-    console.log(job);
+    // console.log(job);
 
     axios
       .patch(`/api/v1/view-job/update/${jobDetail?.data?._id}`, job)

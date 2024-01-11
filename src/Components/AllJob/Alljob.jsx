@@ -17,7 +17,7 @@ const Alljob = () => {
     },
   });
 
-  console.log(jobs?.data);
+  // console.log(jobs?.data);
 
   const searchHandler = (e) => {
     e.preventDefault();

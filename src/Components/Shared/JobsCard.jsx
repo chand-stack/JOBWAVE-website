@@ -20,6 +20,7 @@ const JobsCard = () => {
   });
 
   return (
+    <>
     <div className="container mx-auto my-20 space-y-10">
       <h1 className="text-3xl md:text-4xl font-black text-white text-center">
         Newest <span className="text-[#A582F7]">Jobs</span> for You
@@ -28,9 +29,9 @@ const JobsCard = () => {
         Get the fastest application so that your name is above other application
       </p>
 
-      <div className="mx-auto">
+      <div className="">
         <Tabs className="  text-white">
-          <TabList className=" mx-auto max-w-lg">
+          <TabList className=" text-center">
             <Tab onClick={() => setCategory("")}>All Recent</Tab>
             <Tab onClick={() => setCategory("onsite")}>On Site Job</Tab>
             <Tab onClick={() => setCategory("remote")}>Remote Job</Tab>
@@ -318,6 +319,7 @@ const JobsCard = () => {
         </Tabs>
       </div>
     </div>
+    </>
   );
 };
 

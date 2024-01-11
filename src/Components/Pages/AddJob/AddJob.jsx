@@ -20,7 +20,7 @@ const AddJob = () => {
 
   // console.log(jobCategory);
   // if (startDate <= lastDate) {
-  //     console.log("You can apply for this job.");
+  //     .log("You can apply for this job.");
   //   } else {
   //     console.log("Sorry, the application period for this job has ended.");
   //   }
@@ -50,7 +50,7 @@ const AddJob = () => {
       email,
       description,
     };
-    console.log(typeof applicants);
+    // console.log(typeof applicants);
 
     axios.post("/api/v1/job-add", job).then((res) => {
       if (res.data.insertedId) {

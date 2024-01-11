@@ -53,9 +53,9 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      const email = currentUser.email;
-      console.log({ email });
-      if (currentUser.email) {
+      const email = currentUser?.email;
+      
+      if (currentUser?.email) {
         axios
           .post("/api/v1/jwt", { email })
           .then((res) => {

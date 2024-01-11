@@ -17,7 +17,7 @@ const Banner = () => {
             <input
               type="text"
               placeholder=" Search Jobs . . ."
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs text-black"
             />
             <button className="btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none w-28 text-white">
               Search

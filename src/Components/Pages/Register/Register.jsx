@@ -8,8 +8,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import useAxios from "../../../hook/useAxios";
 
 const Register = () => {
+  const axios = useAxios()
   const { creatUser, updateUser, loginWithGoogle } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -44,7 +46,7 @@ const Register = () => {
       return;
     }
 
-    console.log(name, photo, email, passowrd);
+    // console.log(name, photo, email, passowrd);
     creatUser(email, passowrd)
       .then(() => {
         Swal.fire(
@@ -52,6 +54,16 @@ const Register = () => {
           "Welcome to our community. Explore and discover exciting career opportunities. Lets get started!",
           "success"
         );
+        axios
+        .post("/api/v1/jwt", { email })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.error("Axios Error:", error);
+          console.error("Error Message:", error.message);
+          console.error("Error Response:", error.response);
+        });
 
         updateUser(name, photo)
           .then(() => {

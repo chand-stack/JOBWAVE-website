@@ -21,7 +21,7 @@ const ViewJob = () => {
       return res;
     },
   });
-  console.log(jobDetail?.data);
+  // console.log(jobDetail?.data);
 
   const applyHandler = () => {
     if (user?.email == jobDetail?.data?.email) {
@@ -44,7 +44,7 @@ const ViewJob = () => {
     document.getElementById("my_modal_1").showModal();
     document.getElementById("appliedBtn").addEventListener('click', () => {
       document.getElementById("my_modal_1").close();
-      console.log("Clicked");
+      // console.log("Clicked");
     });
   };
 
@@ -85,7 +85,7 @@ const ViewJob = () => {
     axios
       .patch(`/api/v1/view-job/${jobDetail?.data?._id}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setApplicantNum(1);
         emailjs
           .send(

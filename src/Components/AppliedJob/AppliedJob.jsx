@@ -30,10 +30,10 @@ const AppliedJob = () => {
       </div>
     );
   }
-  console.log(appliedjob);
+  // console.log(appliedjob);
 
   const categoryHandler = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setCategory(e.target.value);
   };
 
